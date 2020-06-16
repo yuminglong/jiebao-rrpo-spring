@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiebao.platfrom.railway.dao.AddressMapper">
+
+    <select id="getAddressList" resultType="address">
+        select * from rail_address r join sys_dept d on r.parents_id = d.dept_id
+        <where>
+            <if test="parentsId != null">
+                  r.parents_id = #{parentsId}
+            </if>
+
+        </where>
+    </select>
+
+
+    <update id="updateByIds">
+            UPDATE rail_address r SET r.parents_id = 'fc1a198f11198e91c593723c6a51ac97' WHERE r.parents_id = #{parentsId}
+    </update>
+</mapper>
